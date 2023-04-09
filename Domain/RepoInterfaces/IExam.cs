@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Domain.ExamDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +10,21 @@ namespace RepoInterfaces
     internal interface IExam
     {
         /// <summary>
-        /// Gets all the exams of a specific marker
+        /// Gets all the exams to be marked for a specific marker
         /// </summary>
         /// <returns></returns>
-        List<Exam> GetExamList();
-
-        List<Exam> GetUnmarkedExamList();
-        List<Exam> GetMarkedExamList();
+        List<UnmarkedExamDTO> GetUnmarkedExamList();
 
         /// <summary>
-        /// what is the output of the marking process????????
+        /// Get all already marked but assigned for remarking Exams
         /// </summary>
-        /// <param name="examId"></param>
         /// <returns></returns>
-        double MarkExam(int examId);
+        List<MarkedExamDTO> GetReMarkExamList();
+
+        /// <summary>
+        /// Sends a list of marked exams 
+        /// </summary>
+        /// <returns></returns>
+        List<MarkedExamDTO> SendMarkedExam();
     }
 }
